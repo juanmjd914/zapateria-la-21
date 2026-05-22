@@ -7,7 +7,7 @@
     "dev": "vite --port 5174",
     "server": "node server/index.js",
     "start": "concurrently \"npm run dev\" \"npm run server\"",
-    "build": "tsc -b && vite build",
+    "build": "npm install --include=dev && tsc -b && vite build",
     "prod": "NODE_ENV=production node server/index.js",
     "lint": "eslint .",
     "preview": "vite preview"
