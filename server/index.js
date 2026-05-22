@@ -6,6 +6,20 @@ import { fileURLToPath } from 'url'
 import { MercadoPagoConfig, Preference, Payment } from 'mercadopago'
 import supabase from './supabase.js'
 
+// ─── Captura de errores fatales ───────────────────────────────────────────────
+process.on('uncaughtException', (err) => {
+  console.error('❌ UNCAUGHT EXCEPTION:', err.message)
+  console.error(err.stack)
+  process.exit(1)
+})
+process.on('unhandledRejection', (reason) => {
+  console.error('❌ UNHANDLED REJECTION:', reason)
+})
+
+console.log('=== SERVIDOR INICIANDO ===')
+console.log('NODE_ENV:', process.env.NODE_ENV)
+console.log('PORT env:', process.env.PORT)
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const isProd    = process.env.NODE_ENV === 'production'
 
