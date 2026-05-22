@@ -10,7 +10,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const isProd    = process.env.NODE_ENV === 'production'
 
 const app  = express()
-const PORT = process.env.PORT || 3001
+const PORT = Number(process.env.PORT) || 3000
 
 // ─── MercadoPago ──────────────────────────────────────────────────────────────
 const mpClient = new MercadoPagoConfig({
@@ -279,9 +279,15 @@ if (isProd) {
 }
 
 // ─── Arranque ─────────────────────────────────────────────────────────────────
-app.listen(PORT, () => {
+const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`\n🚀 Servidor Zapateria la 21`)
-  console.log(`   Puerto:     http://localhost:${PORT}`)
+  console.log(`   Puerto:      ${PORT}`)
+  console.log(`   NODE_ENV:    ${process.env.NODE_ENV}`)
   console.log(`   MercadoPago: ${process.env.MP_ACCESS_TOKEN ? '✅ Token configurado' : '⚠️  Usando token de prueba'}`)
   console.log(`   Supabase:    ${process.env.SUPABASE_URL    ? '✅ Conectado'          : '⚠️  Sin configurar'}\n`)
+})
+
+server.on('error', (err) => {
+  console.error('❌ Error al iniciar servidor:', err.message)
+  process.exit(1)
 })
