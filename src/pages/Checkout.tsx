@@ -15,7 +15,7 @@ interface Comprador {
 const ORIGIN = window.location.origin
 
 export default function Checkout() {
-  const { items, totalPrice, totalItems, removeItem, clearCart } = useCartStore()
+  const { items, totalPrice, totalItems, removeItem } = useCartStore()
   const navigate  = useNavigate()
   const precio    = totalPrice()
   const cantidad  = totalItems()

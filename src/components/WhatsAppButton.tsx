@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react'
 import { useState } from 'react'
-import { X, MessageCircle } from 'lucide-react'
+import { X } from 'lucide-react'
 
 const PHONE = '584123650 6'.replace(/\s/g, '')
 const WA_URL = `https://wa.me/${PHONE}?text=Hola%20Zapateria%20la%2021%2C%20estoy%20interesado%20en%20sus%20productos%20%F0%9F%91%9F`

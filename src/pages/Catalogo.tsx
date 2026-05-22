@@ -50,8 +50,8 @@ export default function Catalogo() {
           setProducts(data)
         }
         // Si falla, queda con FALLBACK_PRODUCTS (datos hardcodeados)
+        setLoading(false)
       })
-      .finally(() => setLoading(false))
   }, [])
 
   const openPicker = (p: Product) =>
