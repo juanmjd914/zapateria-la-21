@@ -287,7 +287,7 @@ app.get('/api/salud', (_req, res) => {
 
 // ─── SPA fallback (producción): cualquier ruta que no sea /api → index.html ──
 if (isProd) {
-  app.get('*', (_req, res) => {
+  app.get('/{*path}', (_req, res) => {
     res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'))
   })
 }
